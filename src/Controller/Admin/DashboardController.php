@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Entity\Formation;
 use App\Entity\Presentation;
+use App\Entity\Blog;
+use App\Entity\Contact;
 use App\Controller\Admin\UserCrudController;
 use App\Controller\Admin\FormationCrudController;
 use App\Controller\Admin\PresentationCrudController;
@@ -50,15 +52,17 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Police Technique et Scientifique: de A à Z');
     }
 
+    // Side-menu in dashboard
     public function configureMenuItems(): iterable
-    {
+    {  
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Présentation', 'fas fa-star', Presentation::class);
-        yield MenuItem::linkToCrud('Formations', 'fas fa-book', Formation::class);
-      
         yield MenuItem::linkToCrud('Histoire', 'fas fa-history', History::class);
+        yield MenuItem::linkToCrud('Formations', 'fas fa-book', Formation::class);
+        yield MenuItem::linkToCrud('Blog', 'fa fa-commenting', Blog::class);
+        yield MenuItem::linkToCrud('Contact', 'fa fa-envelope', Contact::class);
+        
         
         
     }

@@ -2,36 +2,45 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\History;
-
+use App\Entity\Blog;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class HistoryCrudController extends AbstractCrudController
+class BlogCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return History::class;
+        return Blog::class;
     }
 
     
     public function configureFields(string $pageName): iterable
     {
+        
         return [
             
             TextField::new('title', 'Titre'),
-            TextField::new('subtitle', 'Sous-titre'),
-            TextEditorField::new('content', 'Contenu'),
-            ImageField::new('image')
+            SlugField::new('slug')->setTargetFieldName('title')->hideOnIndex(),
+            TextField::new('introduction', 'Intro'),
+            TextEditorField::new('content1', 'Contenu'),
+            ImageField::new('image1')
                 ->setBasePath('uploads/files')
                 ->setUploadDir('public/uploads/files')
                 ->setUploadedFileNamePattern('[randomhash]', '[extension]')
                 ->setRequired(false)
                 ->hideOnIndex(),
-            TextField::new('date', 'Date (Uniquement les 4 chiffres de l\'année)'),
+            DateField::new('created_at'),
+            TextEditorField::new('content2', 'Contenu'),
+            ImageField::new('image2')
+                ->setBasePath('uploads/files')
+                ->setUploadDir('public/uploads/files')
+                ->setUploadedFileNamePattern('[randomhash]', '[extension]')
+                ->setRequired(false)
+                ->hideOnIndex(),
         ];
     }
     
