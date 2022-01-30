@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PresentationController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/dfghr', name: 'dxcfg')]
     public function index(): Response
     {
         return $this->render('home/index.html.twig', [

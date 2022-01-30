@@ -20,18 +20,37 @@ class PresentationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+           
             TextField::new('title1'),
             TextEditorField::new('content1'),
             TextField::new('title2'),
             TextEditorField::new('content2'),
             TextField::new('headline1'),
             TextField::new('headline2'),
-            ImageField::new('image1'),
-            ImageField::new('image2'),
-            ImageField::new('image3'),
-            ImageField::new('image3'),
-
+            ImageField::new('image1')
+                ->setBasePath('uploads/files')
+                ->setUploadDir('public/uploads/files')
+                ->setUploadedFileNamePattern('[randomhash]', '[extension]')
+                ->setRequired(false)
+                ->hideOnIndex(),
+            ImageField::new('image2')
+                ->setBasePath('uploads/files')
+                ->setUploadDir('public/uploads/files')
+                ->setUploadedFileNamePattern('[randomhash]', '[extension]')
+                ->setRequired(false)
+                ->hideOnIndex(),
+            ImageField::new('image3')
+                ->setBasePath('uploads/files')
+                ->setUploadDir('public/uploads/files')
+                ->setUploadedFileNamePattern('[randomhash]', '[extension]')
+                ->setRequired(false)
+                ->hideOnIndex(),
+            ImageField::new('image4')
+                ->setBasePath('uploads/files')
+                ->setUploadDir('public/uploads/files')
+                ->setUploadedFileNamePattern('[randomhash]', '[extension]')
+                ->setRequired(false)
+                ->hideOnIndex(),
         ];
     }
     
