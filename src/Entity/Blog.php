@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BlogRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BlogRepository::class)]
@@ -36,6 +38,14 @@ class Blog
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $image2;
+
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comments::class, orphanRemoval: true)]
+    private $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -134,6 +144,36 @@ class Blog
     public function setImage2(?string $image2): self
     {
         $this->image2 = $image2;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getArticle() === $this) {
+                $comment->setArticle(null);
+            }
+        }
 
         return $this;
     }
