@@ -5,6 +5,14 @@
 {% block body %}
 <h1>Histoire de la pts</h1>
 
+{% for history in histories %}
+{{ history.title}}
+{{history.content | raw}}
+{{history.date}}
+
+<img class="article-img img-fluid" src="/uploads/files/{{history.image}}"/>
+{% endfor %}
+
   <!-- // Fonts -->
 <div class="timeline">
   <!-- Vertical Timeline -->
