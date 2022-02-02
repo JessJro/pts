@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTimeImmutable;
 use App\Entity\Contact;
 use App\Entity\Formation;
 use App\Form\ContactType;
@@ -26,15 +27,18 @@ class HomeController extends AbstractController
     {
         $presentation = $this->em->getRepository(Presentation::class)->findAll();
         $contact = new Contact();
+        
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request); 
+        $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()){
             $contact = $form->getData();
+            $contact->setCreatedAt(new DateTimeImmutable());
             $this->em->persist($contact);
             $this->em->flush();
         }
 
-        return $this->render('home/index.html.twig', ['presentation'=>$presentation, 'form'=>$form->createView()]);
+        return $this->render('home/index.html.twig', ['user'=>$user, 'presentation'=>$presentation, 'form'=>$form->createView()]);
     }
 }

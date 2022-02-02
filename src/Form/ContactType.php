@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ContactType extends AbstractType
@@ -19,28 +20,35 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('name',TextType::class, [
-                'label' => 'Nom',
+                'label' => 'Nom*',
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Votre email',
+                'required' => true,
+                'label' => 'Votre email*',
             ])
             ->add('subject', TextType::class, [
                 'label' => 'Sujet',
              ])
             ->add('message',TextareaType::class, [
+                'required' => true,
                 'label' => 'Votre message*',
                 'constraints' => new Length(
                     [
                         'min' => 8,
-                        'max' => 200,
+                        'max' => 200, //limit the number of caracters
                     ]
                 ),
+                
+            ])
+            ->add('rgpd', CheckboxType::class,[
                 'required' => true,
+                'label' => 'En cochant cette case, j\'accepte que les informations saisies soient stockées et utilisées pour permettre de me recontacter. '
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer',
                 'attr' => [
                     'class' => 'points-btn btn mt-2 btn-bk',
+            
                 ]
             ]);
             
@@ -53,4 +61,7 @@ class ContactType extends AbstractType
             'data_class' => Contact::class,
         ]);
     }
+
+
+                      
 }

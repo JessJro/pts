@@ -17,12 +17,11 @@
                 <div class="card-content">
                     <div class="card-img">
                         <img src="https://placeimg.com/380/230/nature" alt="">
-                        <span><h4>{{article.title}}</h4></span>
+                        <span><h4>{{article.theme}}</h4></span>
                     </div>
                     <div class="card-desc">
-                        <h3>Heading</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis
-                            voluptas totam</p>
+                        <h3>{{article.title}}</h3>
+                        <p>{{article.introduction}}</p>
                             <a href="{{ path('article', {'slug' : article.slug } ) }}" class="btn-card">Read</a>   
                     </div>
                 </div>

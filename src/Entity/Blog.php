@@ -42,6 +42,9 @@ class Blog
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comments::class, orphanRemoval: true)]
     private $comments;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $theme;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -174,6 +177,18 @@ class Blog
                 $comment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTheme(): ?string
+    {
+        return $this->theme;
+    }
+
+    public function setTheme(?string $theme): self
+    {
+        $this->theme = $theme;
 
         return $this;
     }

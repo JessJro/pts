@@ -22,7 +22,7 @@ class BlogCrudController extends AbstractCrudController
     {
         
         return [
-            
+            TextField::new('theme', 'Thème'),
             TextField::new('title', 'Titre'),
             SlugField::new('slug')->setTargetFieldName('title')->hideOnIndex(),
             TextField::new('introduction', 'Intro'),
