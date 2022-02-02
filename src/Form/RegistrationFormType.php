@@ -14,50 +14,74 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('pseudo', TextType::class, [
-            'label' => 'Pseudo',
-        ])
-            ->add('email', EmailType::class, [
-                'label' => 'Email*',
-            ])
-           
-            
-            
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 20,
-                    ]),
+            ->add('pseudo', TextType::class, [
+                'label' => 'Pseudo*',
+                'required' => true,
+                'attr'=> [
+                    'class'=>'form-control'
+
                 ],
             ])
-            ->add('submit', SubmitType::class, [
-                'label' => "S'inscrire",
-            ]) 
+            ->add('email', EmailType::class, [
+                'label' => 'Email*',
+                'required' => true,
+                'attr'=> [
+                    'class'=>'form-control'
+
+                ],
+            ])
+            ->add('plainPassword', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'required'=> true,
+                'mapped' => false,
+                'first_options' => [
+                    'label' => 'Votre mot de passe'
+                    
+            ],
+                'second_options' => [
+                    'label' => 'Confirmer le mot de passe',
+                ],
+                'invalid_message' => 'Les mots de passe doivent correspondre.',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Entrez un mot de passe',
+                    ]),
+                    new Length([
+                        'min' => 8,
+                        'max' => 20,
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères.',
+                        'maxMessage' => 'Votre mot de passe doit contenir au maximum {{ limit }} caractères.'
+                    ])
+                ]
+            ))
+
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'label' => 'Accord',
+                'attr'=>[
+                    'class'=>'checkbox mb-3',
+                ],
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Confirmez être en accord avec nos conditions',
-                    ]),
+                    ])
                 ],
             ])  
+
+            ->add('submit', SubmitType::class, [
+                'label' => "S'inscrire",
+                'attr'=>[
+                    'class'=> 'btn-card',
+                ],
+            ]) 
+            
         ;
     }
 

@@ -4,15 +4,16 @@
 
 {% block body %}
 
-
 {# --Présentation-- #}
 <div class="wrap">
 
-{{form(form)}}
 
+<div>
 {% for item in presentation %}
 {{ item.title1}}
 {% endfor %}
+</div>
 
-
+Formulaire de contact
+{{form(form)}}
 {% endblock %}

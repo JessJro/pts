@@ -5,7 +5,7 @@
         
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav "> 
-                <img src="img/icon.png" class="rounded-circle" width="30">
+                <img src="{{ asset('img/icon.png') }}" class="rounded-circle" width="30">
        
                 <a class="nav-link {{'home' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('home') }}">Acceuil</a> 
                 <a class="nav-link {{'history' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('history') }}">Histoire</a> 
@@ -13,6 +13,13 @@
                 <a class="nav-link {{'blog' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('blog') }}">Blog</a> 
                 <a class="nav-link {{'register' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('register') }}">S'inscrire</a> 
                           
+            </div>
+            <div class="log">
+                {% if app.user %}
+                    Vous êtes connecté(e) en tant que: {{ app.user.pseudo }} | <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                {% else %} 
+                    Vous n'êtes pas connecté(e) | <a href="{{ path('app_login') }}">Se connecter</a>
+                {% endif %}
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Blog;
+use App\Entity\User;
 use App\Entity\Comments;
 use App\Form\CommentsType;
 use App\Repository\CommentsRepository;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Id;
 
 class BlogController extends AbstractController
 {    private $em;
@@ -44,11 +46,15 @@ class BlogController extends AbstractController
         //Creation of comment form
         $commentForm = $this->createForm(CommentsType::class, $comment);
         $commentForm->handleRequest($request);
-
+      
+        $author=$this->getUser();
+        
         //Form validation
         if ($commentForm->isSubmitted() && $commentForm->isValid()){
-            $comment->setDate(new DateTime());
+            $comment = $commentForm->getData();
+            $comment->setCreatedAt(new DateTime());
             $comment->setArticle($article);
+            $comment->setAuthor($author);
             
             //get content of parentid 
             $parentid = $commentForm->get("parentid")->getData();
@@ -66,7 +72,6 @@ class BlogController extends AbstractController
             $this->addFlash('success', 'Votre commentaire a bien été envoyé');
             return $this->redirectToRoute('article', ['slug' => $article->getSlug()]);
         }
-
         return $this->render('blog/article.html.twig', [
             'article' => $article,
             'commentForm' =>$commentForm->createView()

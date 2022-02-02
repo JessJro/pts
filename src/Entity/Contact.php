@@ -25,6 +25,12 @@ class Contact
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $name;
 
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $rgpd;
+
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private $created_at;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +80,30 @@ class Contact
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getRgpd(): ?bool
+    {
+        return $this->rgpd;
+    }
+
+    public function setRgpd(bool $rgpd): self
+    {
+        $this->rgpd = $rgpd;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(?\DateTimeImmutable $created_at): self
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }
