@@ -4,33 +4,34 @@
 
 {% block body %}
 <h1>Blog</h1>
-
-
- 
-
-<section class="details-card">
-  
-    <div class="container">
-        
-        <div class="row"> {% for article in articles %} 
-            <div class="col-md-4">
-                <div class="card-content">
-                    <div class="card-img">
-                        <img src="https://placeimg.com/380/230/nature" alt="">
-                        <span><h4>{{article.theme}}</h4></span>
-                    </div>
-                    <div class="card-desc">
-                        <h3>{{article.title}}</h3>
-                        <p>{{article.introduction}}</p>
-                            <a href="{{ path('article', {'slug' : article.slug } ) }}" class="btn-card">Read</a>   
-                    </div>
-                </div>
-            </div>
-           {% endfor %}
-        </div>
-       
+<div class="container-lg">{% for article in articles %} 
+    <div class="card">
+      <div class="card__header">
+        <img src="https://placeimg.com/380/230/nature"  alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">{{article.theme}}</span>
+        <h4>{{article.title}}</h4>
+        <p>{{article.introduction}}</p>
+      </div>
+      <div class="card__footer">
+        <a href="{{ path('article', {'slug' : article.slug } ) }}" class="btn-card">Read</a>         
+      </div>
     </div>
-</section>
-
-
+    <div>
+      <div class="card">
+        <div class="card__header">
+          <img src="https://placeimg.com/380/230/nature"  alt="card__image" class="card__image" width="600">
+        </div>
+        <div class="card__body">
+          <span class="tag tag-red">{{article.theme}}</span>
+          <h4>{{article.title}}</h4>
+          <p>{{article.introduction}}</p>
+        </div>
+        <div class="card__footer">
+          <a href="{{ path('article', {'slug' : article.slug } ) }}" class="btn-card">Read</a>         
+        </div>
+      </div>
+    </div>{% endfor %}
+  </div>
 {% endblock %}
