@@ -15,14 +15,15 @@
 
         <h3><i>{{ item.headline1}}</i></h3>
         <img src="/uploads/files/{{item.image1}}" alt="">
-        <p>{{ item.content1}}</p>
+        <p>{{ item.content1|raw}}</p>
     </div>
+    
     <div>
 
         <h2>{{ item.title2}}</h2>
         <h3><i>{{ item.headline2}}</i></h3>
         <img src="/uploads/files/{{item.image2}}" alt="">
-        <p>{{ item.content2}}</p>
+        <p>{{ item.content2|raw}}</p>
     </div>
     {% endfor %}
 </div>
