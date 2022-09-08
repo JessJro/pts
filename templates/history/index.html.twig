@@ -1,97 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HistoryController!{% endblock %}
-
 {% block body %}
-<h1>Histoire de la pts</h1>
 
-{% for history in histories %}
-{{ history.title}}
-{{history.content | raw}}
-{{history.date}}
-
-<img class="article-img img-fluid" src="/uploads/files/{{history.image}}"/>
-{% endfor %}
-
-  <!-- // Fonts -->
-<div class="timeline">
-  <!-- Vertical Timeline -->
-  <section id="conference-timeline">
-    <div class="timeline-start">Start</div>
-    <div class="conference-center-line"></div>
-    <div class="conference-timeline-content">
-      <!-- Article -->
-      <div class="timeline-article">
-        <div class="content-left-container">
-          <div class="content-left">
-            <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. Mankind, let us preserve and increase this beauty, and not destroy it! 
-                <span class="article-number">01</span>
-            </p>
+<section>
+  <h1>Histoire de la pts</h1>
+  <div class="container py-5">
+      <div class="row">
+          <div class="col-md-12">
+            
+              <div class="main-timeline">{% for history in histories %}
+                  <div class="timeline ">
+                      <div class="timeline-content">
+                        
+                          <div class="circle"><span class="homebox">
+                            <img src="/uploads/files/{{history.image}}" class="img">
+                           </span></div>
+                          <div class="content">
+                            <span class="year">{{history.date}}</span>
+                              <h3 class="title h4">{{ history.title}}</h3>
+                              <p class="description">
+                                {{history.content | raw}}  
+                              </p>
+                              <div class="icon"><span></span></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="timeline">
+                      <div class="timeline-content">
+                          <div class="circle"><span class="homebox">
+                            <img src="/uploads/files/{{history.image}}" class="img"></span></div>
+                          <div class="content">
+                              <span class="year">No.2</span>
+                              <h3 class="title h4">Heading</h3>
+                              <p class="description">
+                                 Tristique senectus et netus et malesuada fames. Sit amet consectetur adipiscing elit pellentesque. Felis imperdiet proin fermentum leo vel orci porta non pulvinar. Erat nam at lectus urna duis convallis. Eget aliquet nibh praesent tristique magna. Interdum posuere lorem ipsum dolor sit amet. Elementum tempus egestas sed sed risus pretium quam. Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices.
+                              </p>
+                              <div class="icon"><span></span></div>
+                          </div>
+                      </div>
+                  </div>
+                   {% endfor %}                 
+              </div>
           </div>
-        
-        </div>
-        <div class="content-right-container">
-          <div class="content-right">
-            <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. 
-                <span class="article-number">02</span>
-            </p>
-          </div>
-       
-        </div>
-        <div class="meta-date">
-          <span class="date">18</span>
-        </div>
       </div>
-      <!-- // Article -->
-      
-      <!-- Article -->
-      <div class="timeline-article">
-        <div class="content-left-container">
-          <div class="content-left">
-            <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. Mankind, let us preserve and increase this beauty, and not destroy it! 
-                <span class="article-number">01</span>
-            </p>
-          </div>
-         
-        </div>
-        <div class="content-right-container">
-          <div class="content-right">
-            <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. 
-                <span class="article-number">02</span>
-            </p>
-          </div>
- 
-        </div>
-        <div class="meta-date">
-          <span class="date">1945</span>
-        </div>
-      </div>
-      <!-- // Article -->
-      
-      <!-- Article -->
-      <div class="timeline-article">
-        <div class="content-left-container">
-          <div class="content-left">
-            <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. Mankind, let us preserve and increase this beauty, and not destroy it!
-                 <span class="article-number">01</span></p>
-          </div>
-      
-        </div>
-        <div class="content-right-container">
-          <div class="content-right">
-            <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. <span class="article-number">02</span></p>
-          </div>
-    
-        </div>
-        <div class="meta-date">
-          <span class="date">18</span>
-        </div>
-      </div>
-      <!-- // Article -->
-    </div>
-    <div class="timeline-end">End</div>
+  </div>
   </section>
-  <!-- // Vertical Timeline -->
-</div>
+
+
+
+
+
+
+
+ 
 
 {% endblock %}

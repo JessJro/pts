@@ -64,7 +64,7 @@ class RegistrationFormType extends AbstractType
 
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => 'Accord',
+                'label' => "En cochant cette case, j'accepte que les informations saisies soient stockées et utilisées pour permettre de me recontacter.",
                 'attr'=>[
                     'class'=>'checkbox mb-3',
                 ],
