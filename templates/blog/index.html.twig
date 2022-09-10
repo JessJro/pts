@@ -3,35 +3,62 @@
 {% block title %}Hello BlogController!{% endblock %}
 
 {% block body %}
-<h1>Blog</h1>
-<div class="container-lg">{% for article in articles %} 
-    <div class="card">
-      <div class="card__header">
-        <img src="https://placeimg.com/380/230/nature"  alt="card__image" class="card__image" width="600">
-      </div>
-      <div class="card__body">
-        <span class="tag tag-blue">{{article.theme}}</span>
-        <h4>{{article.title}}</h4>
-        <p>{{article.introduction}}</p>
-      </div>
-      <div class="card__footer">
-        <a href="{{ path('article', {'slug' : article.slug } ) }}" class="btn-card">Read</a>         
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <div class="card__header">
-          <img src="https://placeimg.com/380/230/nature"  alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <span class="tag tag-red">{{article.theme}}</span>
-          <h4>{{article.title}}</h4>
-          <p>{{article.introduction}}</p>
-        </div>
-        <div class="card__footer">
-          <a href="{{ path('article', {'slug' : article.slug } ) }}" class="btn-card">Read</a>         
-        </div>
-      </div>
-    </div>{% endfor %}
-  </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<section class="blog-listing gray-bg">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col-lg-8 m-15px-tb">
+                    <div class="row">{% for article in articles %}
+                        <div class="col-sm-6">
+                            <div class="blog-grid">
+                                <div class="blog-img">
+                                   
+                                    <div class="date">
+                                        <span>{{article.createdAt|date('j')}}</span>
+                                        <label>{{article.createdAt|date('F')}}</label>
+                                    </div>
+                                    <a href="#">
+                                        <img src="uploads/files/{{ article.image1 }}" title="" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-info">
+                                    <h6>{{ article.theme }}</h6>
+                                    <h4>{{ article.title }}</h4>
+                                    <p>{{ article.introduction }}</p>
+                                    <div class="btn-bar">
+                                        <a href="{{ path('article', {'slug' : article.slug } ) }}" class="px-btn-arrow">
+                                            <span>Lire plus</span>
+                                            <i class="arrow"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                        <div class="col-12">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               
+                
+            </div>
+        </div> 
+    </section>
+
+
 {% endblock %}
