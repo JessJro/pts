@@ -7,54 +7,114 @@
             </div>
 {% endfor %}
 
-<div>
-    <h1>{{article.theme}}</h1>
 
+    <section class="article rounded">
+    <h6>{{article.theme}}</h6> 
+    <h1>{{article.title}}</h1>
+        
+        <h3>{{article.introduction}}</h3>
         {{article.content1 | raw}}
         <img src="uploads/files/{{ article.image1 }}"/>
        
         {{article.content2 | raw}}
         {{article.image2}}
-        <div class="grix xs2 sm3 gutter-0 card">
-            <div class="col-xs2 col-sm3">
-                <h2> Liste des commmentaires</h2>
+    </section>
+
+    {% if app.user %}
+      
+    <section >
+      <div class="container my-5 py-5">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12 col-lg-10 col-xl-8">
+            <div class="card">
+              <div class="card-body p-4">
+                <h4 class="text-center mb-4 pb-2">Liste des commentaires</h4>
                 {% for comment in article.comments %}
-            
-                    {% if comment.parent == null %}
-                {# <h4>Commentaire de {{comment.pseudo}}</h4>#}
-                
-                    <p>Publié par {{comment.author.pseudo}} le {{comment.createdAt|date("d/m/Y H:i")}}</p>
-                    <div>{{comment.content|raw}}</div>
-                    <p><a href="#ajout-commentaire" data-reply  data-id="{{comment.id}}" class="btn-card">Répondre au commentaire</a></p>
-                    {# on affiche les réponses aux comments#}
-                    {% for reply in comment.replies %}
-                        <p>Publié par  le {{reply.createdAt|date("d/m/Y H:i")}}</p>
-                        <div>{{reply.content|raw}}</div>
+                  {% if comment.parent == null %}
+                  <div class="row">
+                    <div class="col">
+                      <div class="d-flex flex-start">
+                        <img class="rounded-circle shadow-1-strong me-3"
+                        src="/img/{{ comment.author.image }}"/>
+                          <div class="flex-grow-1 flex-shrink-1">
+                            <div>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <p class="mb-1">
+                                {{comment.author.pseudo}}<span class="small"> Posté le {{comment.createdAt|date("d/m/Y à H:i")}}</span>
+                                </p>
+                                  <a href="#ajout-commentaire" data-reply  data-id="{{comment.id}}"><i class="fas fa-reply fa-xs"></i><span class="small">Répondre</span></a>
+                              </div>
+                                  <p class="small mb-0">
+                                  {{comment.content|raw}}
+                                  </p>
+                            </div>
+                            {# on affiche les réponses aux comments#}
+                            {% for reply in comment.replies %}
+                  
+                            <div class="media mt-4">
+												 <img class="rounded-circle shadow-1-strong me-3" 
+                          src="/img/{{ comment.author.image }}">
+												<div class="media-body">
+														
+													<div class="row">
+											 <div class="col-12 d-flex">
+											    <h5>{{reply.author.pseudo}} </h5>
+												<span> Posté le {{reply.createdAt|date("d/m/Y à H:i")}}</span>
+											 </div>
+											 
+											
+											</div>
+
+                      {{reply.content|raw}}
+												</div>
+											</div>
+                           {% endfor %}                  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     
-                            
-                    {% endfor %}
-
-                    {% endif %}
-                    
-                {% endfor %}
+                    {% endif %}{% endfor %}
+                  </div>
+                  
+                  
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>   
+                        
+                                      
+                                      
+                                  
+                                      
+                  </section>
+                  <div class="container my-5 py-5">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-md-12 col-lg-10 col-xl-8">
+                        <div class="card">
+                          <div class="card-body p-4">
+                            <h4 class="text-center mb-4 pb-2"id="ajout-commentaire">Ajouter un commentaire</h4>
+                            {{form(commentForm)}}
+                                                           
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
 
 
-            <div class="col-xs2 col-sm3" id="ajout-commentaire">
-                <h2> ajouter commmentaires</h2>
-                {{form(commentForm)}}
 
-            
-                
-            </div>
-        
-    </div>
-</div>    
-   
-    
 
+
+                {% else %}
+                <div class="not-connected">
+                  <p>Il faut être inscrit(e) et connecté(e) pour accèder à la section commentaires de l'article</p>
+                </div>
+{% endif %}
 {% endblock %}
-
 {% block javascripts %}
 <script>
     window.onload = () =>{
@@ -71,4 +131,3 @@
 
 
 {% endblock %}
-

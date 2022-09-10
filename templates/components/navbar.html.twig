@@ -1,24 +1,26 @@
 {% block navbar %}
-<nav class="navbar navbar-expand-lg bg-dark">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid"> <a class="navbar-brand" href="#"> 
         
         
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav "> 
-                <img src="{{ asset('img/icon.png') }}" class="rounded-circle" width="30">
+            
+                <img src="{{ asset('img/photographer.png') }}" class="rounded-circle" width="30">
        
                 <a class="nav-link {{'home' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('home') }}">Acceuil</a> 
                 <a class="nav-link {{'history' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('history') }}">Histoire</a> 
                 <a class="nav-link {{'formation' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('formation') }}">Formations</a> 
                 <a class="nav-link {{'blog' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('blog') }}">Blog</a> 
                 <a class="nav-link {{'register' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('register') }}">S'inscrire</a> 
-                          
+                        
             </div>
             <div class="log">
                 {% if app.user %}
-                    Vous êtes connecté(e) en tant que: {{ app.user.pseudo }} | <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                    Vous êtes connecté(e) en tant que: <span><b>{{ app.user.pseudo }}</b></span>
+                    <img class="rounded-circle" width="30" src="{{ asset('img/profile-user.jpeg') }}"/> | <a href="{{ path('app_logout') }}">Se déconnecter</a>
                 {% else %} 
-                    Vous n'êtes pas connecté(e) | <a href="{{ path('app_login') }}">Se connecter</a>
+                    Non connecté(e) | <a href="{{ path('app_login') }}">Se connecter</a>
                 {% endif %}
             </div>
         </div>

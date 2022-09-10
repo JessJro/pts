@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{% block body %}
+<h1>Blog</h1>
+
+
+ 
+
+<section class="details-card">
+  
+   
+        
+        <div class="row"> {% for article in articles %} 
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="https://placeimg.com/380/230/nature" alt="">
+                        <span><h4>{{article.theme}}</h4></span>
+                    </div>
+                    <div class="card-desc">
+                        <h3>{{article.title}}</h3>
+                        <p>{{article.introduction}}</p>
+                            <a href="{{ path('article', {'slug' : article.slug } ) }}" class="btn-card">Read</a>   
+                    </div>
+                </div>
+            </div>
+           {% endfor %}
+        </div>
+       
+    
+</section>
+
+
+{% endblock %}
