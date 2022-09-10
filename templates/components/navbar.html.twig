@@ -1,9 +1,18 @@
 {% block navbar %}
+
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid"> <a class="navbar-brand" href="#"> 
+    <div class="container-fluid"> 
         
         
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="log">
+                {% if app.user %}
+                <img class="rounded-circle" width="30" src="{{ asset('img/profile-user.jpeg') }}"/>
+                <span><b>{{ app.user.pseudo }}</b></span>| <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                {% else %} 
+                    Non connecté(e) | <a href="{{ path('app_login') }}">Se connecter</a>
+                {% endif %}
+            </div>
             <div class="navbar-nav "> 
             
                 <img src="{{ asset('img/photographer.png') }}" class="rounded-circle" width="30">
@@ -15,14 +24,7 @@
                 <a class="nav-link {{'register' in app.request.get('_route') ? 'active':'' }}" aria-current="page" href="{{ path('register') }}">S'inscrire</a> 
                         
             </div>
-            <div class="log">
-                {% if app.user %}
-                    Vous êtes connecté(e) en tant que: <span><b>{{ app.user.pseudo }}</b></span>
-                    <img class="rounded-circle" width="30" src="{{ asset('img/profile-user.jpeg') }}"/> | <a href="{{ path('app_logout') }}">Se déconnecter</a>
-                {% else %} 
-                    Non connecté(e) | <a href="{{ path('app_login') }}">Se connecter</a>
-                {% endif %}
-            </div>
+            
         </div>
     </div>
 </nav>
