@@ -5,7 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class UserCrudController extends AbstractCrudController
@@ -23,6 +23,12 @@ class UserCrudController extends AbstractCrudController
             TextField::new('email'),
             TextField::new('pseudo'),
             ArrayField::new('roles'),
+            ImageField::new('image')
+                ->setBasePath('uploads/files')
+                ->setUploadDir('public/uploads/files')
+                ->setUploadedFileNamePattern('[randomhash]', '[extension]')
+                ->setRequired(false)
+                ->hideOnIndex(),
         ];
     }
     
