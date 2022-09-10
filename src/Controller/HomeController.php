@@ -39,6 +39,8 @@ class HomeController extends AbstractController
             $this->em->flush();
         }
 
-        return $this->render('home/index.html.twig', ['user'=>$user, 'presentation'=>$presentation, 'form'=>$form->createView()]);
+        return $this->render('home/index.html.twig', 
+        ['user'=>$user, 'presentation'=>$presentation, 'form'=>$form->createView()]
+        );
     }
 }
