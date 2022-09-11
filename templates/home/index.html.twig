@@ -3,7 +3,7 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-{% include ('components/header.html.twig') %}
+{#{% include ('components/header.html.twig') %}#}
 {# --Présentation-- #}
 {% for message in app.flashes('success') %}
             <div class="alert alert-success">
@@ -11,18 +11,37 @@
             </div>
 {% endfor %}
 
-<h1>La police Technique et Scientifique: de A à Z</h1>
-
 
 <div class="container-presentation">
     {% for item in presentation %}
-    <div clss="content-one">
+
+    
+    
+      <img src="/uploads/files/{{item.image1}}" class="homepage-img" alt="PHoto de présentation" >
+      <div class="content-one">
         <h2>{{ item.title1}}</h2>
 
         <h3><i>{{ item.headline1}}</i></h3>
-        <img src="/uploads/files/{{item.image1}}" class="rounded-circle" width="250" alt="PHoto de présentation">
+       
         <p>{{ item.content1|raw}}</p>
     </div>
+    <div>
+      <div class="hover13 column">
+        <div>
+          <figure><a href="{{ path('history') }}"><img src="https://picsum.photos/600/400?image=244" /></a></figure>
+          <span>Histoire</span>
+        </div>
+        <div>
+          <figure><a href="{{ path('blog') }}"><img src="https://picsum.photos/600/400?image=1024" /></a></figure>
+          <span>Blog</span>
+        </div>
+        <div>
+          <figure><a href="{{ path('register') }}"><img src="https://picsum.photos/600/400?image=611" /></a></figure>
+          <span>Inscription</span>
+        </div>
+      </div>
+      
+      </div>
     
     <div class="content-two">
 
