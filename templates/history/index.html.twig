@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+<div class="body-history">
+<div class="widget-wrap">
+  <div id="grid"></div>
 <h1>L'histoire de la POlice technique et scientifique</h1>
 <div class="wrap-history">
 <div class="vtl">
@@ -10,11 +12,12 @@
   <div class="event">
     <div class="line">
       <p class="date">{{history.date}}</p>
-      <img src="/uploads/files/{{history.image}}" class="rounded-circle" id="img-history" responsive width="100">
+      <img src="/uploads/files/{{history.image}}" class="rounded-circle" id="img-history" width="100">
     </div>
     <p class="txt">{{history.content | raw}} </p>
     
   </div>{% endfor %} 
 </div>
 </div>
+</div></div>
 {% endblock %}

@@ -485,11 +485,6 @@ img {
 
 /*-------------------history page ----------------*/
 /* (A) TIMELINE CONTAINER */
-.wrap-history{
-    display: flex;
-    margin: 5rem 45rem;
-    
-}
 .vtl {
     /* (A1) RELATIVE POSITION REQUIRED TO PROPERLY POSITION THE TIMELINE */
     position: relative;
@@ -497,18 +492,17 @@ img {
     /* (A2) RESERVE MORE SPACE TO THE LEFT FOR THE TIMELINE */
     padding: 10px 10px 10px 50px;
    
-    /* (A3) OPTIONAL WIDTH RESTRICTION */
-    max-width: 400px;
+    /* (A3) OPTIONAL WIDTH RESTRICTION *
+    max-width: 400px;*/
   }
   .vtl, .vtl * { box-sizing: border-box; }
- 
   
   /* (B) DRAW VERTICAL LINE USING ::BEFORE */
   .vtl::before {
     /* (B1) VERTICAL LINE */
     content: "";
     width: 5px;
-    background-color: #0a0a0a;
+    background-color:red;
    
     /* (B2) POSITION TO THE LEFT */
     position: absolute;
@@ -518,20 +512,20 @@ img {
   /* (C) COSMETICS FOR EVENTS */
   div.event {
     padding: 20px 30px;
-    background-color: lightsteelblue;
+    background-color:#e7e7e7;
     position: relative;
     border-radius: 6px;
     margin-bottom: 10px;
+    align-items: center; justify-content: center;
+    max-width: 45rem;
+    
   }
   
   /* (D) COSMETICS FOR EVENT DATE & TEXT */
   p.date {
-    font-size: 2em;
+    font-size: 1.1em;
     font-weight: 700;
-    color: #16100c;
-    justify-content: flex-start;
-    
-
+    color: red;
   }
   p.txt {
     margin: 10px 0 0 0;
@@ -543,7 +537,7 @@ img {
     /* (E1) "MAGIC TRIANGLE" */
     content: "";
     border: 10px solid transparent;
-    border-right-color: lightsteelblue;
+    border-right-color:#e7e7e7;
     border-left: 0;
    
      /* (E2) POSITION TO THE LEFT */
@@ -556,7 +550,7 @@ img {
     /* (F1) "MAGIC CIRCLE" */
     content: "";
     background: #fff;
-    border: 4px solid #0c0b0b;
+    border: 4px solid red;
     width: 16px; height: 16px;
     border-radius: 50%;
    
@@ -564,12 +558,44 @@ img {
     position: absolute;
     top: 20%; left: -44px;
   }
-
-  .line{
+  
+  /* (X) DOES NOT MATTER */
+  /* PAGE & BODY */
+  
+  .body-history {
     display: flex;
-    justify-content: space-between;
+    align-items: center; justify-content: center;
+    min-height: 100vh;
+    background-image: url(https://c8.alamy.com/compfr/j22ajn/la-main-et-les-empreintes-digitales-pour-l-identification-j22ajn.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
   }
   
+  /* WIDGET */
+  .widget-wrap {
+    min-width: 500px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+ 
+  
+  /* FOOTER */
+  #code-boxx {
+    font-weight: 600;
+    margin-top: 50px;
+  }
+  #code-boxx a {
+    display: inline-block;
+    padding: 5px;
+    text-decoration: none;
+    background: red;
+    color: #fff;
+  }
+  #code-boxx , h1 { text-align: center; }
 
   /*--------------------------*/
 
