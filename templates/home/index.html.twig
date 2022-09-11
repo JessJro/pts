@@ -5,7 +5,11 @@
 {% block body %}
 {% include ('components/header.html.twig') %}
 {# --Présentation-- #}
-
+{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+{% endfor %}
 
 <h1>La police Technique et Scientifique: de A à Z</h1>
 
