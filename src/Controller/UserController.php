@@ -11,7 +11,8 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 
 class UserController extends AbstractController
-{
+{   
+
     #[Route('/user/edit/{id}', name: 'user.edit')]
     public function index(User $user, Request $request, EntityManagerInterface $em): Response
     {   
@@ -27,9 +28,6 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             $user = $form->getData();
-
-
-            
             $em->persist($user);
             $em->flush();
 
@@ -39,7 +37,10 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/edit.html.twig', [
-            'form' => $form->createView(),
+            'user'=>$user, 'form' => $form->createView(), 
+           
         ]);
     }
+
+    
 }
