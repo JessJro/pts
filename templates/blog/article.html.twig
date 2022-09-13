@@ -26,7 +26,7 @@
                             
                         </div>                        
                     </div>
-                    {% if app.user %}{{dump(app.user)}}
+                    {% if app.user %}
                     <div class="card">
                       <div class="header">
                         <h2>Commentaires</h2>
@@ -38,7 +38,9 @@
                                 <li class="row clearfix">
                                   <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/files/{{ comment.author.image }}" alt="Awesome Image"></div>
                                     <div class="text-box col-md-10 col-8 p-l-0 p-r0">
-                                      <h5 class="m-b-0">{{comment.author.pseudo}}</h5>
+                                      <h5 style="text-align:center;" id="tooltip" class="m-b-0">{{comment.author.pseudo}}
+                                        <span class="tooltiptext">{{comment.author.presentation}}</span>
+                                      </h5>
                                         <p>{{comment.content|raw}}</p>
                                           <ul class="list-inline">
                                             <li>{{comment.createdAt|date("d/m/Y à H:i")}}</li>
@@ -53,7 +55,9 @@
                                   <li class="row clearfix">
                                     <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/files/{{ reply.author.image }}"> </div>
                                     <div class="text-box col-md-10 col-8 p-l-0 p-r0">
-                                        <h5 class="m-b-0">{{reply.author.pseudo}}</h5>
+                                      <h5 style="text-align:center;" id="tooltip" class="m-b-0">{{reply.author.pseudo}}
+                                        <span class="tooltiptext">{{reply.author.presentation}}</span>
+                                      </h5>
                                         <p>{{reply.content|raw}}</p>
                                         <ul class="list-inline">
                                             <li>{{reply.createdAt|date("d/m/Y à H:i")}}</li>
