@@ -1,12 +1,14 @@
 {% block navbar %}
 <div class="navbar-body">
     <navbar class="navbar">
-        <div class="user-state">{% if app.user %}
+        <div class="user-state">
+            {% if app.user %}
             <img class="img-nav" width="50" src="/uploads/files/{{ app.user.image }}"/>
-            <span><b>{{ app.user.pseudo }}</b></span> | <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            <span><b><a href="#">{{ app.user.pseudo }}</a></b></span> | <a href="{{ path('app_logout') }}">Se déconnecter</a>
             {% else %} 
                 Non connecté(e) | <a href="{{ path('app_login') }}">Se connecter</a>
-            {% endif %} </div>
+            {% endif %}
+        </div>
         <a href="" class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>

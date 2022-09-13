@@ -1,11 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% for message in app.flashes('success') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-{% endfor %}
+
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
@@ -37,13 +33,13 @@
                               <ul class="comment-reply list-unstyled">
                                 <li class="row clearfix">
                                   <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/files/{{ comment.author.image }}" alt="Awesome Image"></div>
-                                    <div class="text-box col-md-10 col-8 p-l-0 p-r0">
-                                      <h5 style="text-align:center;" id="tooltip" class="m-b-0">{{comment.author.pseudo}}
-                                        <span class="tooltiptext">{{comment.author.presentation}}</span>
-                                      </h5>
-                                        <p>{{comment.content|raw}}</p>
+                                    <div class="text-box col-md-10 col-8 p-l-0 p-r0" id="text-box-comment">
+                                      <h4 style="text-align:center;" id="tooltip" class="m-b-0">{{comment.author.pseudo}}
+                                        <span class="tooltiptext"><i>{{comment.author.presentation}}</i></span>
+                                      </h4>
+                                        <p id="content-comm">{{comment.content|raw}}</p>
                                           <ul class="list-inline">
-                                            <li>{{comment.createdAt|date("d/m/Y à H:i")}}</li>
+                                            <li class="date-comm">{{comment.createdAt|date("d/m/Y à H:i")}}</li>
                                             <li><a href="#ajout-commentaire" data-reply  data-id="{{comment.id}}">Répondre</a></li>
                                           </ul>
                                     </div>
@@ -54,13 +50,13 @@
                                 <ul class="reply">
                                   <li class="row clearfix">
                                     <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/files/{{ reply.author.image }}"> </div>
-                                    <div class="text-box col-md-10 col-8 p-l-0 p-r0">
-                                      <h5 style="text-align:center;" id="tooltip" class="m-b-0">{{reply.author.pseudo}}
-                                        <span class="tooltiptext">{{reply.author.presentation}}</span>
-                                      </h5>
-                                        <p>{{reply.content|raw}}</p>
+                                    <div class="text-box col-md-10 col-8 p-l-0 p-r0" id="text-box-reply">
+                                      <h4 style="text-align:center;" id="tooltip" class="m-b-0">{{reply.author.pseudo}}
+                                        <span class="tooltiptext"><i>{{reply.author.presentation}}</i></span>
+                                      </h4>
+                                        <p class="content-comm">{{reply.content|raw}}</p>
                                         <ul class="list-inline">
-                                            <li>{{reply.createdAt|date("d/m/Y à H:i")}}</li>
+                                            <li class="date-comm">{{reply.createdAt|date("d/m/Y à H:i")}}</li>
                                         </ul>
                                     </div>
                                   </li>
@@ -89,6 +85,11 @@
             </div>
         </div>
 </div>
+{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+{% endfor %}
 
 {% endblock %}
 {% block javascripts %}

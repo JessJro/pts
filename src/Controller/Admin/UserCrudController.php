@@ -23,6 +23,7 @@ class UserCrudController extends AbstractCrudController
             TextField::new('email'),
             TextField::new('pseudo'),
             ArrayField::new('roles'),
+            TextField::new('presentation'),
             ImageField::new('image')
                 ->setBasePath('uploads/files')
                 ->setUploadDir('public/uploads/files')

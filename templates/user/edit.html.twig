@@ -3,31 +3,33 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
- <!-- .card-body -->
+
+
+
  
 
-
- <div class="card-body text-center">
-    <!-- .user-avatar -->
-    <a href="user-profile.html" class="user-avatar user-avatar-xl my-3">
-        <img src="/uploads/files/{{ user.image }}" alt="User Avatar"
-             class="rounded-circle user-avatar-xl">
-    </a>
-    <!-- /.user-avatar -->
-    <h3 class="card-title mb-2 text-truncate">
-        <a href="user-profile.html">{{ app.user.pseudo }}</a>
-    </h3>
-   
-
-{{dump(user)}}
-   
-</div>
-
 <div class="container">
-    <h1 class="mt-4">Modifier son profil</h1>
-    {{form(form)}}
+    <div class="profile-form">
+        <div class="card-body text-center">
+            <img  src="/uploads/files/{{ user.image }}" alt="User Avatar" width="250">
+        </div>
+    <h1 class="mt-4">Vous voulez modifier votre profil?</h1>
+   
+    {{ form_start(form) }}
+        {{ form_row(form.image,{
+        label: 'Photo'
+        }) }}
+        {{ form_row(form.pseudo,{
+            label: 'Pseudo'
+        }) }}
+        
+        {{ form_row(form.presentation,{
+            label: 'Quelques mots à votre sujet'
+        }) }}
+    {{ form_end(form) }}
+    </div>
 </div>
 
-<img  src="uploads/files/{{ app.user.image }}" title="" alt="yooooooo">
+
 
 {% endblock %}

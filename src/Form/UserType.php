@@ -19,8 +19,7 @@ class UserType extends AbstractType
             
             ->add('pseudo',TextType::class, [
                 'label' => 'Pseudo',
-            ])
-            
+            ])           
             
             ->add('image',FileType::class, ['required' => false, 'mapped' => false])
            
@@ -38,7 +37,7 @@ class UserType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer',
                 'attr' => [
-                    'class' => 'btn',
+                    'class' => 'btn-edit',
             
                 ]
             ]);
