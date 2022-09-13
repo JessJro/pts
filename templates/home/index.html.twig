@@ -25,15 +25,15 @@
     <div>
       <div class="hover13 column">
         <div>
-          <figure><a href="{{ path('history') }}"><img src="https://picsum.photos/600/400?image=244" /></a></figure>
+          <figure><a href="{{ path('history') }}"><img src="/img/prelevement.jpg" /></a></figure>
           <span>Histoire</span>
         </div>
         <div>
-          <figure><a href="{{ path('blog') }}"><img src="https://picsum.photos/600/400?image=1024" /></a></figure>
+          <figure><a href="{{ path('blog') }}"><img src="/img/blog.jpg" /></a></figure>
           <span>Blog</span>
         </div>
         <div>
-          <figure><a href="{{ path('register') }}"><img src="https://picsum.photos/600/400?image=611" /></a></figure>
+          <figure><a href="{{ path('register') }}"><img src="/img/inscription.jpg" /></a></figure>
           <span>Inscription</span>
         </div>
       </div>
@@ -44,36 +44,29 @@
     <div class="content-two">
       <h2>{{ item.title2}}</h2>
         <h3><i>{{ item.headline2}}</i></h3>
-          <img src="/uploads/files/{{item.image2}}" class="rounded-circle" width="250" alt="PHoto de présentation" alt="">
+          <img src="/uploads/files/{{item.image2}}" class="rounded-circle" width="150" alt="PHoto de présentation" alt="">
           <p>{{ item.content2|raw}}</p>
     </div>
     {% endfor %}
 
 
+    <div class="container">
+      <div class="profile-form">
+         
+      <h1 class="mt-4">Contact</h1>
 
-
-  <div>
-    <div class="contact-form-wrapper d-flex justify-content-center">
-      <form action="#" class="contact-form">
-        <h5 class="title">Contact us</h5>
-        <p class="description">Feel free to contact us if you need any assistance, any help or another question.
-        </p>
-        <div>
-          <input type="text" class="form-control rounded border-white mb-3 form-input" id="name" placeholder="Name" required>
-        </div>
-        <div>
-          <input type="email" class="form-control rounded border-white mb-3 form-input" placeholder="Email" required>
-        </div>
-        <div>
-          <textarea id="message" class="form-control rounded border-white mb-3 form-text-area" rows="5" cols="30" placeholder="Message" required></textarea>
-        </div>
-        <div class="submit-button-wrapper">
-          <input type="submit" value="Send">
-        </div>
-      </form>
+{{ form_start(form) }}
+     {{ form_row(form.name, {
+      label:"Votre nom*"
+     }) }}
+     
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.message) }}
+        {{ form_row(form.rgpd) }}
+    {{ form_end(form) }}
     </div>
-</div>
-</div>
+    </div>
 {#
 <div class="contact-form">
   <form method="post" data-form-title="CONTACT US"> 
