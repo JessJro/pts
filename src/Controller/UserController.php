@@ -16,6 +16,8 @@ class UserController extends AbstractController
     #[Route('/user/edit/{id}', name: 'user.edit')]
     public function index(User $user, Request $request, EntityManagerInterface $em): Response
     {   
+        
+
         if(!$this->getUser()){
             return $this->redirectToRoute('register');
         }

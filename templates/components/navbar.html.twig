@@ -1,5 +1,40 @@
 {% block navbar %}
+<div class="navbar-body">
+    <navbar class="navbar">
+        <div class="brand-title">{% if app.user %}
+            <img class="rounded-circle" width="30" src="/uploads/files/{{ app.user.image }}"/>
+            <span><b>{{ app.user.pseudo }}</b></span> | <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            {% else %} 
+                Non connecté(e) | <a href="{{ path('app_login') }}">Se connecter</a>
+            {% endif %} </div>
+        <a href="" class="toggle-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+            <ul>
+                <li> <a href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li><a href="{{ path('history') }}">Histoire</a>
 
+                </li>
+                <li><a href="{{ path('blog') }}">Blog</a>
+
+                </li>
+                <li><a href="{{ path('register') }}">Inscription</a>
+
+                </li>
+            </ul>
+        </div>
+    </navbar>
+</div>
+
+
+
+
+{#
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid"> 
         
@@ -7,7 +42,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="log">
                 {% if app.user %}
-                <img class="rounded-circle" width="30" src="{{ asset('img/profile-user.jpeg') }}"/>
+                <img class="rounded-circle" width="30" src="/uploads/files/{{ app.user.image }}"/>
                 <span><b>{{ app.user.pseudo }}</b></span>| <a href="{{ path('app_logout') }}">Se déconnecter</a>
                 {% else %} 
                     Non connecté(e) | <a href="{{ path('app_login') }}">Se connecter</a>
@@ -27,5 +62,17 @@
             
         </div>
     </div>
-</nav>
+</nav>#}
+{% endblock %}
+{% block javascripts %}
+<script>
+    const toggleButton = document.getElementsByClassName('toggle-button')[0]
+    const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+    toggleButton.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active')
+    })
+</script>
+
+
 {% endblock %}
