@@ -4,17 +4,22 @@
 
 {% block body %}
  <!-- .card-body -->
+ 
+
+
  <div class="card-body text-center">
     <!-- .user-avatar -->
     <a href="user-profile.html" class="user-avatar user-avatar-xl my-3">
-        <img src="/uploads/images/{{ app.user.image }}" alt="User Avatar"
+        <img src="/uploads/files/{{ user.image }}" alt="User Avatar"
              class="rounded-circle user-avatar-xl">
     </a>
     <!-- /.user-avatar -->
     <h3 class="card-title mb-2 text-truncate">
         <a href="user-profile.html">{{ app.user.pseudo }}</a>
     </h3>
-    
+   
+
+{{dump(user)}}
    
 </div>
 

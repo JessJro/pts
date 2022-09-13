@@ -16,7 +16,7 @@
                     <div class="card single_post">
                         <div class="body">
                             <div class="img-post">
-                                <img class="d-block img-fluid" src="uploads/files/{{ article.image1 }}">
+                                <img class="d-block img-fluid" src="/uploads/files/{{ article.image1 }}">
                             </div>
                             <h6>{{article.theme}}</h6> 
                             <h3>{{article.title}}</h3>
@@ -26,7 +26,7 @@
                             
                         </div>                        
                     </div>
-                    {% if app.user %}
+                    {% if app.user %}{{dump(app.user)}}
                     <div class="card">
                       <div class="header">
                         <h2>Commentaires</h2>
@@ -36,7 +36,7 @@
                             {% if comment.parent == null %}
                               <ul class="comment-reply list-unstyled">
                                 <li class="row clearfix">
-                                  <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/img/{{ comment.author.image }}" alt="Awesome Image"></div>
+                                  <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/files/{{ comment.author.image }}" alt="Awesome Image"></div>
                                     <div class="text-box col-md-10 col-8 p-l-0 p-r0">
                                       <h5 class="m-b-0">{{comment.author.pseudo}}</h5>
                                         <p>{{comment.content|raw}}</p>
@@ -51,7 +51,7 @@
                               {% for reply in comment.replies %}
                                 <ul class="reply">
                                   <li class="row clearfix">
-                                    <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/img/{{ reply.author.image }}"> </div>
+                                    <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/files/{{ reply.author.image }}"> </div>
                                     <div class="text-box col-md-10 col-8 p-l-0 p-r0">
                                         <h5 class="m-b-0">{{reply.author.pseudo}}</h5>
                                         <p>{{reply.content|raw}}</p>
