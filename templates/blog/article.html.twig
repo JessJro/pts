@@ -14,26 +14,27 @@
                             
                             <img width="100%" src="/uploads/files/{{ article.image1 }}">
                            
-                            <h6>{{article.theme}}</h6> 
-                            <h3>{{article.title}}</h3>
-                            <h4>{{article.introduction}}</h4>
+                            <div style="color:rgb(151, 26, 26);"><h5><b>{{article.theme}}</b></h5></div> 
+                            <h2>{{article.title}}</h2>
+                            <h4><i>{{article.introduction}}</i></h4>
                             <p>{{article.content1|raw}}</p>
                             <p> {{article.content2|raw}}</p>
                             
                         </div>                        
                     </div>
                     {% if app.user %}
-                     
                     <div class="card">
                       <div class="header">
                         <h2>Commentaires</h2>
                       </div>
                         <div class="body">
+                          {# Comments display #}
                           {% for comment in article.comments %}
                             {% if comment.parent == null %}
                               <ul class="comment-reply list-unstyled">
                                 <li class="row clearfix">
-                                  <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/images/{{ comment.author.image }}" alt="Awesome Image"></div>
+                                  <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" 
+                                    src="/uploads/images/{{ comment.author.image }}" alt="Awesome Image"></div>
                                     <div class="text-box col-md-10 col-8 p-l-0 p-r0" id="text-box-comment">
                                       <h4 style="text-align:center;" id="tooltip" class="m-b-0">{{comment.author.pseudo}}
                                         <span class="tooltiptext"><i>{{comment.author.presentation}}</i></span>
@@ -41,16 +42,18 @@
                                         <p id="content-comm">{{comment.content|raw}}</p>
                                           <ul class="list-inline">
                                             <li class="date-comm">{{comment.createdAt|date("d/m/Y à H:i")}}</li>
-                                            <li><a href="#ajout-commentaire" data-reply  data-id="{{comment.id}}">Répondre</a></li>
+                                            <li><a href="#ajout-commentaire" data-reply  data-id="{{comment.id}}">Répondre</a>
+                                            </li>                                           
                                           </ul>
                                     </div>
                                 </li>
                               </ul>
-                              {# on affiche les réponses aux comments#}
+                              {# Replies display#}
                               {% for reply in comment.replies %}
                                 <ul class="reply">
                                   <li class="row clearfix">
-                                    <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/images/{{ reply.author.image }}"> </div>
+                                    <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" 
+                                      src="/uploads/images/{{ reply.author.image }}"> </div>
                                     <div class="text-box col-md-10 col-8 p-l-0 p-r0" id="text-box-reply">
                                       <h4 style="text-align:center;" id="tooltip-reply" class="m-b-0">{{reply.author.pseudo}}
                                         <span class="tooltiptext"><i>{{reply.author.presentation}}</i></span>
