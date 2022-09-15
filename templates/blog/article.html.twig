@@ -7,13 +7,13 @@
 
 <div id="main-content" class="blog-page">
         <div class="container">
-            <div class="row clearfix">
-                <div class="col-lg-8 col-md-12 left-box">
+           
+                <div class="m-15px-tb">
                     <div class="card single_post">
                         <div class="body">
-                            <div class="img-post">
-                                <img class="d-block img-fluid" src="/uploads/files/{{ article.image1 }}">
-                            </div>
+                            
+                            <img width="100%" src="/uploads/files/{{ article.image1 }}">
+                           
                             <h6>{{article.theme}}</h6> 
                             <h3>{{article.title}}</h3>
                             <h4>{{article.introduction}}</h4>
@@ -23,6 +23,9 @@
                         </div>                        
                     </div>
                     {% if app.user %}
+                      {% if article.comments != null %}
+                      <div><p>Il n'y a pas de commentaires concernant cet article. N'hésitez pas à être le/la premier(e)!</p></div>
+                      {% else %}
                     <div class="card">
                       <div class="header">
                         <h2>Commentaires</h2>
@@ -32,7 +35,7 @@
                             {% if comment.parent == null %}
                               <ul class="comment-reply list-unstyled">
                                 <li class="row clearfix">
-                                  <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/files/{{ comment.author.image }}" alt="Awesome Image"></div>
+                                  <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="/uploads/images/{{ comment.author.image }}" alt="Awesome Image"></div>
                                     <div class="text-box col-md-10 col-8 p-l-0 p-r0" id="text-box-comment">
                                       <h4 style="text-align:center;" id="tooltip" class="m-b-0">{{comment.author.pseudo}}
                                         <span class="tooltiptext"><i>{{comment.author.presentation}}</i></span>
@@ -61,10 +64,12 @@
                                     </div>
                                   </li>
                                 </ul>
-                              {% endfor %} {% endif %}
-                        {% endfor %}
+                              {% endfor %}
+                            {% endif %}
+                          {% endfor %}
                         </div> 
                       </div>
+                      {% endif %}  
 											<div class="card">
                         <div class="header">
                           <h2>Laisser un commentaire</h2>
@@ -81,8 +86,9 @@
                       <div class="not-connected">
                         <p>Il faut être inscrit(e) et connecté(e) pour accèder à la section commentaires de l'article</p>
                       </div>
-                    {% endif %}     
-            </div>
+                     
+                  {% endif %}     
+           
         </div>
 </div>
 {% for message in app.flashes('success') %}
