@@ -10,6 +10,7 @@ body{
 h1{
     text-align: center;
 }
+
 .btn{
     border: 1px;
     background-color: #555;
@@ -31,7 +32,7 @@ h1{
  text-align: center;
 }
 .content-two{
-  padding:10rem;
+  padding:2rem;
  margin: 1rem 20rem;
  text-align: center;
 }
@@ -69,8 +70,18 @@ figure{
 .user-state{
   margin: .5rem;
 }
+.user-state a{
+  text-decoration: none;
+}
+
+.user-state .pseudo{
+  color:white;
+}
+.user-state .pseudo:hover{
+  color:red;
+}
 .navbar-links ul{
-  margin:0%;
+  margin:0;
   padding:0;
   display:flex;
 }
@@ -153,6 +164,7 @@ figure{
 } 
   .contact-form-wrapper {
     padding: 100px 0;
+    
    
   }
   
@@ -161,6 +173,7 @@ figure{
     background-color: #333;
     border-radius: 12px;
     max-width: 400px;
+    border:1px solid rgb(31, 30, 30);
   }
   
   .contact-form textarea {
@@ -252,7 +265,7 @@ body{
 }
 .card .body {
     color: #444;
-    padding: 20px;
+    padding: 20px 60px;
     font-weight: 400;
 }
 .card .header {
@@ -429,10 +442,6 @@ font-size: 15px
 
 
 /*footer*/
-* {
-  margin: 0;
-  padding: 0;
-}
 a {
   color: #fff;
   text-decoration: none;
@@ -806,7 +815,8 @@ a {
 }
  
 /* ---------- blog -----------*/
-body{margin-top:20px;}
+ body{margin-top:20px;}
+.body{padding:1rem;}
 .blog-listing {
     padding-top: 30px;
     padding-bottom: 30px;

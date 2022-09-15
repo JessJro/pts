@@ -4,21 +4,20 @@
 
 {% block body %}
 
-
-
- 
-
 <div class="container">
     <div class="profile-form">
         <div class="card-body text-center">
-            <img  src="/uploads/files/{{ user.image }}" alt="User Avatar" width="250">
+            {% if app.user.image %}
+            <img class="img-nav" width="250" src="/uploads/images/{{ app.user.image }}"/>
+              {% else %} 
+              <img class="img-nav" width="250" src="/img/profile-user.jpeg"/>
+              {% endif %}
         </div>
     <h1 class="mt-4">Vous voulez modifier votre profil?</h1>
    
     {{ form_start(form) }}
-        {{ form_row(form.image,{
-        label: 'Photo'
-        }) }}
+    {{ form_label(form.image, 'Changer l\'image') }}
+    {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
         {{ form_row(form.pseudo,{
             label: 'Pseudo'
         }) }}
