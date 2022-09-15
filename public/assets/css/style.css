@@ -37,7 +37,7 @@ h1{
  text-align: center;
 }
 
-figure{
+figure img{
     border:2px solid black;
 }
 @media (min-width:480px) and (max-width:1200px) {
@@ -49,6 +49,9 @@ figure{
     padding:1rem;
    margin:0;
    
+  }
+  figure img{
+    display:none;
   }
 }
 
@@ -1204,7 +1207,10 @@ figure:hover+span {
 		opacity: 1;
 	}
 }
-    
+  @media (max-width:600px){
+.hover13 .figure {
+  display:none;
+}
 /*----------------------Footer----------------------*/
 * {
   margin: 0;
