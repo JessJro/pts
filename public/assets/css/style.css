@@ -1193,11 +1193,8 @@ figure:hover+span {
 	animation: flash 1.5s;
     width: 100%;
 }
-#photos-effect{
-  display: flex;
-  justify-content: space-evenly;
-  
-}
+
+
 @-webkit-keyframes flash {
 	0% {
 		opacity: .4;
@@ -1215,8 +1212,9 @@ figure:hover+span {
 	}
 }
   @media (max-width:600px){
-.hover13 {
+#for-responsive{
   display:none;
+}
 }
 /*----------------------Footer----------------------*/
 * {
