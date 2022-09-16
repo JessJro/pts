@@ -24,9 +24,9 @@
                                     </a>
                                 </div>
                                 <div class="blog-info">
-                                    <h6>{{ article.theme }}</h6>
-                                    <h4>{{ article.title }}</h4>
-                                    <p>{{ article.introduction }}</p>
+                                    <div style="color:rgb(7, 74, 218);"><h5>{{ article.theme }}</h5></div>
+                                    <h2>{{ article.title }}</h2>
+                                    <h5>{{ article.introduction }}</h5>
                                     <div class="btn-bar">
                                         <a href="{{ path('article', {'slug' : article.slug } ) }}" class="px-btn-arrow">
                                             <span>Lire plus</span>
