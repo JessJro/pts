@@ -1207,9 +1207,10 @@ figure:hover+span {
 		opacity: 1;
 	}
 }
-  @media (max-width:600px){
-.hover13 .figure {
-  display:none;
+@media (max-width:600px){
+  #for-responsive{
+    display:none
+  }
 }
 /*----------------------Footer----------------------*/
 * {
